@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2"> 
+  <plugin-info> 
+    <description>${project.description}</description>  
+    <version>${project.version}</version>  
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>  
+    <param name="plugin-icon">images/pluginIcon.png</param>  
+    <param name="plugin-logo">images/pluginLogo.png</param> 
+  </plugin-info>  
+  <!-- add our i18n resource -->  
+  <resource type="i18n" name="i18n" location="coeussian-link"/>  
+  <!-- add our web resources -->  
+  <web-resource key="coeussian-link-resources" name="coeussian-link Web Resources"> 
+    <dependency>com.atlassian.auiplugin:ajs</dependency>  
+    <resource type="download" name="coeussian-link.css" location="/css/coeussian-link.css"/>  
+    <resource type="download" name="coeussian-link.js" location="/js/coeussian-link.js"/>  
+    <resource type="download" name="images/" location="/images"/>  
+    <context>coeussian-link</context> 
+  </web-resource>  
+  <web-item name="CreateLinkedIssue" i18n-name-key="create-linked-issue.name" key="create-linked-issue" section="operations-operations" weight="1000"> 
+    <description key="create-linked-issue.description">The CreateLinkedIssue Plugin</description>  
+    <label key="create-linked-issue.label"></label>  
+    <link linkId="create-linked-issue-link">#</link>
+    <styleClass>issueaction-create-linked-issue</styleClass>
+  </web-item>
+</atlassian-plugin>
