@@ -12,16 +12,37 @@
   <resource type="i18n" name="i18n" location="coeussian-link"/>  
   <!-- add our web resources -->  
   <web-resource key="coeussian-link-resources" name="coeussian-link Web Resources"> 
-    <dependency>com.atlassian.auiplugin:ajs</dependency>  
+    <dependency>com.atlassian.auiplugin:ajs</dependency>
     <resource type="download" name="coeussian-link.css" location="/css/coeussian-link.css"/>  
     <resource type="download" name="coeussian-link.js" location="/js/coeussian-link.js"/>  
     <resource type="download" name="images/" location="/images"/>  
     <context>coeussian-link</context> 
-  </web-resource>  
-  <web-item name="CreateLinkedIssue" i18n-name-key="create-linked-issue.name" key="create-linked-issue" section="operations-operations" weight="1000"> 
-    <description key="create-linked-issue.description">The CreateLinkedIssue Plugin</description>  
-    <label key="create-linked-issue.label"></label>  
-    <link linkId="create-linked-issue-link">#</link>
+  </web-resource>
+
+  <web-resource key="coeussian-link-init">
+    <transformation extension="js">
+      <transformer key="jsI18n"/>
+    </transformation>
+
+    <context>jira.view.issue</context>
+    <dependency>com.atlassian.jira.jira-quick-edit-plugin:loading-indicator</dependency>
+    <resource type="download" name="coeussian-link.js" location="/js/coeussian-link.js"/>
+  </web-resource>
+
+  <web-section name="LinkedIssueSection" i18n-name-key="linked-issue-section.name" key="linked-issue-section" location="opsbar-operations" weight="1000"> 
+    <description key="linked-issue-section.description">The LinkedIssueSection Plugin</description>  
+    <label key="linked-issue-section.label"/> 
+  </web-section>  
+  <web-item name="CoreLinkedIssue" i18n-name-key="core-linked-issue.name" key="core-linked-issue" section="linked-issue-section" weight="5">
+    <label key="core-linked-issue.label"/>
+    <link linkId="core-linked-issue-link" absolute="true">#set($H = '#')$H</link>
     <styleClass>issueaction-create-linked-issue</styleClass>
   </web-item>
+<!--
+  <web-item name="CustomLinkedIssue" i18n-name-key="custom-linked-issue.name" key="custom-linked-issue" section="linked-issue-section" weight="1000">
+    <description key="custom-linked-issue.description">The CustomLinkedIssue Plugin</description>
+    <label key="custom-linked-issue.label"/>  
+    <link linkId="custom-linked-issue-link"></link>
+  </web-item>
+-->
 </atlassian-plugin>
